@@ -31,7 +31,6 @@ function DistrictContainer() {
   const name = toTitleCase(districtId).replaceAll('_', ' ').toUpperCase();
 
   useEffect(() => {
-    if (!states) history.push('/');
     else {
       states.forEach((data) => {
         if (Object.keys(data)[0] === stateId) {

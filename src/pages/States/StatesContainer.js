@@ -15,15 +15,11 @@ function StatesContainer() {
   const { states } = useSelector((state) => state.data);
 
   useEffect(() => {
-    if (!states) {
-      history.push('/');
-    } else {
-      states.forEach((data) => {
-        if (Object.keys(data)[0] === stateId) {
-          setStateData(Object.values(data)[0]['districtData']);
-        }
-      });
-    }
+    states.forEach((data) => {
+      if (Object.keys(data)[0] === stateId) {
+        setStateData(Object.values(data)[0]['districtData']);
+      }
+    });
   }, [stateId, states]);
 
   window.onbeforeunload = function (e) {
