@@ -31,16 +31,14 @@ function DistrictContainer() {
   const name = toTitleCase(districtId).replaceAll('_', ' ').toUpperCase();
 
   useEffect(() => {
-    else {
-      states.forEach((data) => {
-        if (Object.keys(data)[0] === stateId) {
-          const dis = districtId.replaceAll('_', ' ');
-          const districtName = toTitleCase(dis);
-          const inner = Object.values(data)[0]['districtData'][districtName];
-          setDistrictData(inner);
-        }
-      });
-    }
+    states.forEach((data) => {
+      if (Object.keys(data)[0] === stateId) {
+        const dis = districtId.replaceAll('_', ' ');
+        const districtName = toTitleCase(dis);
+        const inner = Object.values(data)[0]['districtData'][districtName];
+        setDistrictData(inner);
+      }
+    });
   }, [states]);
   const useStyles = makeStyles((theme) => ({
     container: {

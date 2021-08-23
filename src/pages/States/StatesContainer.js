@@ -15,11 +15,13 @@ function StatesContainer() {
   const { states } = useSelector((state) => state.data);
 
   useEffect(() => {
-    states.forEach((data) => {
-      if (Object.keys(data)[0] === stateId) {
-        setStateData(Object.values(data)[0]['districtData']);
-      }
-    });
+    if (states) {
+      states?.forEach((data) => {
+        if (Object.keys(data)[0] === stateId) {
+          setStateData(Object.values(data)[0]['districtData']);
+        }
+      });
+    }
   }, [stateId, states]);
 
   window.onbeforeunload = function (e) {
@@ -33,6 +35,8 @@ function StatesContainer() {
       alignItems: 'center',
       justifyContent: 'space-between',
       background: theme.palette.primaryColor.black,
+      overflowX: 'hidden',
+      height: !states ? '100vh' : '',
     },
     cardContainer: {
       display: 'grid',
@@ -123,7 +127,7 @@ function StatesContainer() {
           ))
         ) : (
           <div className={classes.loader}>
-            <Loader />
+            <Loader text='Please Wait While Data is being Loaded!' />
           </div>
         )}
       </div>

@@ -13,9 +13,11 @@ function App() {
 
   useEffect(() => {
     const effect = async () => {
-      const res = await axios.get(
-        'https://api.covid19india.org/state_district_wise.json'
-      );
+      const res = await axios
+        .get('https://api.covid19india.org/state_district_wise.json')
+        .then((res) => {
+          console.log('Response', res);
+        });
       const keys = Object.keys(res?.data);
       const values = Object.values(res?.data);
       const result = [];
@@ -31,6 +33,15 @@ function App() {
     };
     effect();
   }, []);
+
+  // useEffect(() => {
+  //   const effect = async () => {
+  //     const res = await axios
+  //       .get('/state_district_wise.json')
+  //       .then((res) => console.log(res));
+  //   };
+  //   effect();
+  // });
 
   const routeComponent = route.map((data, index) => (
     <AnimatePresence exitBeforeEnter>

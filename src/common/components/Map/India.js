@@ -48,7 +48,6 @@ const getalldata = () => {
 function India() {
   const theme = useTheme();
   const history = useHistory();
-  const mapRef = useRef(null);
 
   const handleRegionClick = (e, el) => {
     map.forEach((data) => {
@@ -81,7 +80,6 @@ function India() {
   return (
     <div style={{ overflow: 'hidden' }}>
       <VectorMap
-        ref={mapRef}
         map={'in_mill'}
         backgroundColor={theme.palette.primaryColor.black}
         focusOn={{
